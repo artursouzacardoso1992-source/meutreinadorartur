@@ -1,0 +1,200 @@
+// App.jsx - Single-file React component for Artur Cardoso Personal Trainer
+// Built with Tailwind CSS utility classes. Replace text, images, and links as needed.
+// Usage:
+// 1) Create a React app (Vite / Create React App) with Tailwind configured.
+// 2) Put this file in src/App.jsx and import in main.jsx/index.jsx.
+// 3) Replace placeholder images and adjust contact endpoint in the contact form.
+
+import React from 'react'
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+      {/* NAVBAR */}
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#home" className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white font-bold">AC</div>
+            <div>
+              <h1 className="text-lg font-semibold">Artur Cardoso</h1>
+              <p className="text-xs text-gray-500">Personal Trainer • Treinos Personalizados</p>
+            </div>
+          </a>
+
+          <nav className="hidden md:flex gap-6 items-center text-sm">
+            <a href="#services" className="hover:text-green-600">Serviços</a>
+            <a href="#about" className="hover:text-green-600">Sobre</a>
+            <a href="#testimonials" className="hover:text-green-600">Depoimentos</a>
+            <a href="#contact" className="hover:text-green-600">Contato</a>
+            <a href="#plans" className="bg-green-600 text-white px-4 py-2 rounded-lg shadow-sm hover:opacity-95">Contrate</a>
+          </nav>
+
+          <div className="md:hidden">
+            <button aria-label="open menu" className="p-2 bg-gray-100 rounded-md">☰</button>
+          </div>
+        </div>
+      </header>
+
+      {/* HERO */}
+      <main id="home" className="max-w-6xl mx-auto px-6 py-12">
+        <section className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">Treinos personalizados com acompanhamento real
+            </h2>
+            <p className="mt-4 text-lg text-gray-700">Sou <strong>Artur Cardoso</strong>, seu personal trainer. Programas de treino pensados para seu objetivo — emagrecimento, hipertrofia, performance ou saúde. Online, em casa ou na academia.</p>
+
+            <div className="mt-6 flex gap-3">
+              <a href="#plans" className="bg-green-600 text-white px-5 py-3 rounded-lg shadow">Quero começar</a>
+              <a href="#about" className="px-5 py-3 rounded-lg border border-gray-200">Conheça meu método</a>
+            </div>
+
+            <ul className="mt-8 grid grid-cols-2 gap-2 text-sm text-gray-600">
+              <li>✔️ Planos online e presenciais</li>
+              <li>✔️ Avaliação e prescrição individual</li>
+              <li>✔️ Acompanhamento por app / WhatsApp</li>
+              <li>✔️ Treinos fáceis de seguir</li>
+            </ul>
+          </div>
+
+          <div className="relative">
+            <div className="rounded-2xl overflow-hidden shadow-lg">
+              <img alt="Artur Cardoso - Personal Trainer" src="/placeholder-hero.jpg" className="w-full h-80 object-cover" />
+            </div>
+            <div className="absolute -bottom-6 left-6 bg-white border rounded-xl p-4 shadow-md w-72">
+              <p className="text-sm text-gray-600">Sessão de Avaliação</p>
+              <p className="font-semibold">R$ 80 • 45 minutos</p>
+              <a href="#contact" className="text-xs mt-2 inline-block text-green-600">Agendar agora →</a>
+            </div>
+          </div>
+        </section>
+
+        {/* SERVICES */}
+        <section id="services" className="mt-16">
+          <h3 className="text-2xl font-bold">O que eu ofereço</h3>
+          <div className="mt-6 grid md:grid-cols-3 gap-6">
+            <Card title="Treino Online" desc="Programas semanais com vídeos e acompanhamento por mensagem. Ideal para quem treina em casa." />
+            <Card title="Treino Presencial" desc="Aulas individuais ou em dupla, com foco em técnica e progressão segura." />
+            <Card title="Avaliação Física" desc="Avaliação inicial, metas e plano estruturado para resultados rápidos e sustentáveis." />
+          </div>
+        </section>
+
+        {/* ABOUT */}
+        <section id="about" className="mt-16 bg-white p-6 rounded-2xl shadow-sm">
+          <div className="md:flex gap-8 items-center">
+            <div className="md:w-1/3">
+              <img src="/placeholder-about.jpg" alt="Artur" className="w-full rounded-lg object-cover h-56" />
+            </div>
+            <div className="md:flex-1">
+              <h4 className="text-xl font-semibold">Sobre Artur Cardoso</h4>
+              <p className="mt-3 text-gray-700">Com formação em Educação Física e especialização em treinamento funcional e hipertrofia, acompanho clientes de todas as idades. Meu foco é criar rotinas que encaixem na sua vida, gerando resultados reais e duradouros.</p>
+
+              <ul className="mt-4 text-sm text-gray-600 grid grid-cols-2 gap-2">
+                <li>• Formação: Licenciatura e Bacharelado em Ed. Física</li>
+                <li>• Especializações: Funcional, Emagrecimento, Hipertrofia</li>
+                <li>• Modalidades: Online, Presencial, Em Casa</li>
+                <li>• Ferramentas: Treinos em vídeo, planilhas, Whatsapp</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* PLANS */}
+        <section id="plans" className="mt-16">
+          <h3 className="text-2xl font-bold">Planos</h3>
+          <div className="mt-6 grid md:grid-cols-3 gap-6">
+            <PlanCard name="Essencial" price="R$129/mês" bullets={["Treinos semanais","Apoio por mensagem","Plano estruturado"]} />
+            <PlanCard name="Pro" price="R$199/mês" bullets={["Treinos + Vídeos","Ajustes quinzenais","Avaliação mensal"]} featured />
+            <PlanCard name="Premium" price="R$299/mês" bullets={["Acompanhamento diário","Sessões presenciais","Programa completo"]} />
+          </div>
+        </section>
+
+        {/* TESTIMONIALS */}
+        <section id="testimonials" className="mt-16">
+          <h3 className="text-2xl font-bold">Depoimentos</h3>
+          <div className="mt-6 grid md:grid-cols-3 gap-6">
+            <Testimonial name="Mariana" text="Perdi 10kg em 3 meses com o acompanhamento do Artur. Método simples e prático." />
+            <Testimonial name="Carlos" text="Melhorei minha performance e recuperei lesões. Recomendo demais." />
+            <Testimonial name="Julia" text="Treinos fáceis de encaixar na rotina — adorei a atenção e correções." />
+          </div>
+        </section>
+
+        {/* CONTACT */}
+        <section id="contact" className="mt-16 bg-white p-6 rounded-2xl shadow-sm">
+          <h3 className="text-2xl font-bold">Fale comigo</h3>
+          <div className="mt-4 grid md:grid-cols-2 gap-6">
+            <div>
+              <p className="text-gray-700">Interessado em um plano personalizado? Preencha o formulário ou envie uma mensagem direto no WhatsApp.</p>
+
+              <div className="mt-6 space-y-3 text-sm text-gray-600">
+                <p>📍 Local: Caratinga, MG</p>
+                <p>📞 WhatsApp: <a href="https://wa.me/55SEUNUMERO" className="text-green-600">(xx) xxxxx-xxxx</a></p>
+                <p>✉️ E-mail: <a href="mailto:contato@arturcardoso.com.br" className="text-green-600">contato@arturcardoso.com.br</a></p>
+              </div>
+            </div>
+
+            <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Form submitted (placeholder)') }}>
+              <div>
+                <label className="text-sm font-medium">Nome</label>
+                <input className="mt-2 block w-full rounded-md border-gray-200 shadow-sm" required />
+              </div>
+              <div>
+                <label className="text-sm font-medium">E-mail ou WhatsApp</label>
+                <input className="mt-2 block w-full rounded-md border-gray-200 shadow-sm" required />
+              </div>
+              <div>
+                <label className="text-sm font-medium">Mensagem</label>
+                <textarea className="mt-2 block w-full rounded-md border-gray-200 shadow-sm" rows={4} />
+              </div>
+              <div>
+                <button className="bg-green-600 text-white px-4 py-2 rounded-lg">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="mt-16 py-8 text-sm text-gray-600">
+          <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+            <p>© {new Date().getFullYear()} Artur Cardoso. Todos os direitos reservados.</p>
+            <div className="mt-3 md:mt-0 flex gap-4">
+              <a href="#">Política de Privacidade</a>
+              <a href="#">Termos</a>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  )
+}
+
+function Card({ title, desc }) {
+  return (
+    <div className="bg-white p-5 rounded-2xl shadow-sm">
+      <h4 className="font-semibold">{title}</h4>
+      <p className="mt-2 text-sm text-gray-600">{desc}</p>
+      <a href="#contact" className="inline-block mt-4 text-green-600 text-sm">Saiba mais →</a>
+    </div>
+  )
+}
+
+function PlanCard({ name, price, bullets, featured }) {
+  return (
+    <div className={`p-6 rounded-2xl ${featured ? 'border-2 border-green-200 shadow-lg' : 'border border-gray-100'} bg-white`}>
+      <h5 className="font-semibold text-lg">{name}</h5>
+      <p className="mt-2 font-bold text-2xl">{price}</p>
+      <ul className="mt-4 text-sm text-gray-600 space-y-2">
+        {bullets.map((b, i) => <li key={i}>• {b}</li>)}
+      </ul>
+      <a href="#contact" className="mt-6 inline-block bg-green-600 text-white px-4 py-2 rounded-lg">Contratar</a>
+    </div>
+  )
+}
+
+function Testimonial({ name, text }) {
+  return (
+    <div className="bg-white p-5 rounded-2xl shadow-sm">
+      <p className="text-gray-700">"{text}"</p>
+      <p className="mt-4 font-semibold">— {name}</p>
+    </div>
+  )
+}
